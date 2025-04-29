@@ -1,13 +1,13 @@
 package dsu
 
-type dsuDataStruct struct {
+type DsuDataStruct struct {
 	prev       []int
 	rank       []int
 	curSetSize int
 }
 
-func NewDsu(n int) *dsuDataStruct {
-	d := dsuDataStruct{}
+func NewDsu(n int) *DsuDataStruct {
+	d := DsuDataStruct{}
 	d.prev = make([]int, n)
 	for i := 0; i < n; i++ {
 		d.prev[i] = i
@@ -17,26 +17,26 @@ func NewDsu(n int) *dsuDataStruct {
 	return &d
 }
 
-func (d *dsuDataStruct) getRoot(ind int) int {
+func (d *DsuDataStruct) getRoot(ind int) int {
 	for d.prev[ind] != ind {
 		ind = d.prev[ind]
 	}
 	return ind
 }
 
-func (d *dsuDataStruct) GetNodesNum() int {
+func (d *DsuDataStruct) GetNodesNum() int {
 	return len(d.prev)
 }
 
-func (d *dsuDataStruct) GetSetsNum() int {
+func (d *DsuDataStruct) GetSetsNum() int {
 	return d.curSetSize
 }
 
-func (d *dsuDataStruct) IsSameSet(i1, i2 int) bool {
+func (d *DsuDataStruct) IsSameSet(i1, i2 int) bool {
 	return d.getRoot(i1) == d.getRoot(i2)
 }
 
-func (d *dsuDataStruct) Unite(i1, i2 int) bool {
+func (d *DsuDataStruct) Unite(i1, i2 int) bool {
 	r1, r2 := d.getRoot(i1), d.getRoot(i2)
 	if r1 == r2 {
 		return false

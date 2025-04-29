@@ -93,6 +93,10 @@ func (t *Tree) Get(key string) *string {
 	return search(t.root, key)
 }
 
+func (t *Tree) WildCard(pref string) []string {
+	panic("unimplemented")
+}
+
 func (t *Tree) Insert(key string, value string) bool {
 	// for simplicity. TODO: fix
 	if t.Get(key) != nil {
